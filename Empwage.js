@@ -52,6 +52,16 @@ while(totalWorkinghrs<=TOTAL_WORKING_HRS && totalworkingDays<MAX_NUMBER_OF_WORKI
     emphrs=getempHrs(empcheck);
     totalWorkinghrs+=emphrs;
     dWage.push(calculateWage(emphrs));
+    empHrsWage.push(
+        {
+            daynum:totalworkingDays,
+            daylyhrs:emphrs,
+            dailwage:calculateWage(emphrs),
+            toString(){
+                return "\nDay"+this.daynum+"=> Working Hours is: "+this.daylyhrs+" Wage Earned "+this.dailwage
+            },
+        }
+    );
 }
 
 dWage.forEach(sum);
@@ -99,3 +109,5 @@ empHrsArr.forEach((value,key,map) => {
 console.log("Full working Days are: "+fullWorkingDays);
 console.log("Part working Days are: "+partWorkingDays);
 console.log("Non working Days are: "+nonWorkingDays);
+
+console.log("Showing Daily hours worked and wage earned "+empHrsWage);
